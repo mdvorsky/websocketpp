@@ -39,6 +39,13 @@
     #endif
 #endif
 
+// If we're on Visual Studio 2015 or higher and haven't explicitly disabled
+// the use of C++11 type traits header then prefer it to boost.
+#if defined(_MSC_VER) && _MSC_VER >= 1900 && !defined _WEBSOCKETPP_NO_CPP11_TYPE_TRAITS_
+    #ifndef _WEBSOCKETPP_CPP11_TYPE_TRAITS_
+        #define _WEBSOCKETPP_CPP11_TYPE_TRAITS_
+    #endif
+#endif
 
 #ifdef _WEBSOCKETPP_CPP11_TYPE_TRAITS_
     #include <type_traits>
